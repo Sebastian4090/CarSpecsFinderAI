@@ -2,10 +2,20 @@ import { useEffect, useState, useRef } from 'react';
 import downArrow from "./Img/down-arrow.svg";
 import Dropdown from "../Dropdown/Dropdown";
 
-const Form = (cars) => {
+interface CarsInterface {
+    Brands : string[]
+}
 
-    console.log('cars', cars)
-    console.log('type', typeof(cars));
+type CarsProps = {
+    cars : CarsInterface
+}
+
+const Form = ({cars} : CarsProps) => {
+
+    console.log('Brands', cars.Brands)
+    console.log('Audi', cars.Brands.Audi)
+    console.log('A3', cars.Brands.Audi.A3)
+    console.log('1996', cars.Brands.Audi.A3.gen_8l)
     const [isOpen, setIsOpen] = useState(false);
     const [brand, setBrand] = useState('Brand');
     const [model, setModel] = useState('Model');
@@ -58,7 +68,7 @@ const Form = (cars) => {
                             {model}
                             <img src={downArrow} className="w-5 h-auto pl-2" />    
                         </div>
-                        {isOpen && dropNum === 2 ? <Dropdown /> : null}
+                        {isOpen && dropNum === 2 ? <Dropdown data={cars.Brands.Audi}/> : null}
                     </div>
                     <div className="relative select-none" id="dropdownButton" ref={dropNum === 3 ? dropRef : null}>
                         <div onClick={() => {setIsOpen(!isOpen); setDropNum(3)}} id="button" className="h-12 w-44 text-black rounded-sm text-xl font-primary outline 
@@ -66,7 +76,7 @@ const Form = (cars) => {
                             {year}
                             <img src={downArrow} className="w-5 h-auto pl-2" />
                         </div>
-                        {isOpen && dropNum === 3 ? <Dropdown /> : null}
+                        {isOpen && dropNum === 3 ? <Dropdown data={cars.Brands.Audi.A3}/> : null}
                     </div>
                     <div className="relative select-none" id="dropdownButton" ref={dropNum === 4 ? dropRef : null}>
                         <div onClick={() => {setIsOpen(!isOpen); setDropNum(4)}} id="button" className="h-12 w-44 text-black rounded-sm text-xl font-primary outline 
@@ -74,7 +84,7 @@ const Form = (cars) => {
                             {engine}
                             <img src={downArrow} className="w-5 h-auto pl-2" />    
                         </div>
-                        {isOpen && dropNum === 4 ? <Dropdown /> : null}
+                        {isOpen && dropNum === 4 ? <Dropdown data={cars.Brands.Audi.A3.gen_8l}/> : null}
                     </div>
                     </div>
                 </div>

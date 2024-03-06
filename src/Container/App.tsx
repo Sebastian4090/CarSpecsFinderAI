@@ -3,8 +3,16 @@ import Label from "../Components/Label/Label";
 import Form from "../Components/Form/Form";
 import Footer from "../Components/Footer/Footer";
 
-let mockDB: object = {
-  Brands : ['Audi', 'BMW', 'Citroen', 'Cadilac', 'Chevrolet', 'Porsche'],
+interface CarsGenInfo {
+  Brands : object[]
+}
+
+let mockDB: CarsGenInfo = {
+  Brands : {"Audi" : {
+    "A3" : {
+      "gen_8l" : ["1.6"]
+    }
+  }}
 }
 
 function App() {
