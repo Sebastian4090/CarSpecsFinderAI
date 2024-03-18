@@ -1,37 +1,50 @@
 import { useEffect, useState, useRef } from 'react';
 import downArrow from "./Img/down-arrow.svg";
 import Dropdown from "../Dropdown/Dropdown";
+// import Data from '../Data/Data';
 
-interface CarsInterface {
-    Brands : string[]
-}
+const Form = () => {
 
-type CarsProps = {
-    cars : CarsInterface
-}
-
-const Form = ({cars} : CarsProps) => {
-
-    console.log('Brands', cars.Brands)
-    console.log('Audi', cars.Brands.Audi)
-    console.log('A3', cars.Brands.Audi.A3)
-    console.log('1996', cars.Brands.Audi.A3.gen_8l)
     const [isOpen, setIsOpen] = useState(false);
-    const [brand, setBrand] = useState('Brand');
+    const [currArray, setCurrArray] = useState([]);
+    // const [brand, setBrand] = useState('Brands');
+
+    const [brand, setBrand] = useState('Brands');
+    const [brandList, setBrandList] = useState();
+
     const [model, setModel] = useState('Model');
-    const [year, setYear] = useState('Year');
+    const [modelList, setModelList] = useState();
+
+    const [gen, setGen] = useState('Generation');
+    const [genList, setGenList] = useState();
+
     const [engine, setEngine] = useState('Engine');
+    const [engineList, setEngineList] = useState();
 
     const [dropNum, setDropNum] = useState(0);
 
     let dropRef = useRef<HTMLInputElement>(null);
 
+
+    const Data = async (type: string, id: string): Promise<any> => {
+            await fetch(`http://localhost:3000/data/${id}/${type}`, {
+                method: 'get',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(res => res.json())
+            .then(data => {
+                setCurrArray(data);
+                console.log('dataCurrArray', currArray);
+            })
+            .catch(err => console.log("can't fetch data"));
+
+    }
+
     useEffect(() => {
         let handler = (e : Event) => {
             if(!dropRef.current?.contains(e.target as HTMLButtonElement)) {
                 setIsOpen(false);
-                console.log(dropRef.current)
-                console.log(typeof(e.target));
             }  
         };
 
@@ -40,7 +53,17 @@ const Form = ({cars} : CarsProps) => {
         return() => {
             document.removeEventListener("mousedown", handler);
         }
+
     });
+    if (!brandList) {
+        console.log('brandlist WORKS')
+        useEffect(() => {
+            Data('Brands', '65f046a87e9d5263e088681c');
+            // setBrandList(currArray);
+
+            console.log('brand list test ', currArray)
+        }, [])
+    }
 
     const val = (e : Event) => {
         console.log((e.target as HTMLButtonElement).value)
@@ -55,36 +78,40 @@ const Form = ({cars} : CarsProps) => {
                     </div>
                     <div className="flex flex-row justify-center gap-x-20 pt-10">
                         <div className="relative select-none" id="dropdownButton" ref={dropNum === 1 ? dropRef : null}>
-                            <div onClick={() => {setIsOpen(!isOpen); setDropNum(1); val}} id="button" className="h-12 w-44 text-black rounded-sm text-xl font-primary outline 
+                            <div onClick={(e) => {setIsOpen(!isOpen); setDropNum(1); console.log(brand);}} 
+                            id="button" className="h-12 w-44 text-black rounded-sm text-xl font-primary outline 
                             outline-1 flex justify-between p-2 items-center cursor-pointer">
                                 {brand}
                                 <img src={downArrow} className="w-5 h-auto pl-2" />
                             </div>
-                            {isOpen && dropNum === 1 ? <Dropdown data={cars.Brands}/> : null}
+                            {isOpen && dropNum === 1 ? <Dropdown data={currArray} setBrand={setBrand} setIsOpen={setIsOpen} isOpen={isOpen} /> : null}
                     </div>
                     <div className="relative select-none" id="dropdownButton" ref={dropNum === 2 ? dropRef : null}>
-                        <div onClick={() => {setIsOpen(!isOpen); setDropNum(2)}} id="button" className="h-12 w-44 text-black rounded-sm text-xl font-primary outline 
+                        <div onClick={() => {setIsOpen(!isOpen); setDropNum(2)}} id="button" className="h-12 w-44 text-black 
+                        rounded-sm text-xl font-primary outline 
                         outline-1 flex justify-between p-2 items-center cursor-pointer">
                             {model}
                             <img src={downArrow} className="w-5 h-auto pl-2" />    
                         </div>
-                        {isOpen && dropNum === 2 ? <Dropdown data={cars.Brands.Audi}/> : null}
+                        {isOpen && dropNum === 2 ? <Dropdown data={model}/> : null}
                     </div>
                     <div className="relative select-none" id="dropdownButton" ref={dropNum === 3 ? dropRef : null}>
-                        <div onClick={() => {setIsOpen(!isOpen); setDropNum(3)}} id="button" className="h-12 w-44 text-black rounded-sm text-xl font-primary outline 
+                        <div onClick={() => {setIsOpen(!isOpen); setDropNum(3)}} id="button" className="h-12 w-44 text-black 
+                        rounded-sm text-xl font-primary outline 
                         outline-1 flex justify-between p-2 items-center cursor-pointer">
-                            {year}
+                            {gen}
                             <img src={downArrow} className="w-5 h-auto pl-2" />
                         </div>
-                        {isOpen && dropNum === 3 ? <Dropdown data={cars.Brands.Audi.A3}/> : null}
+                        {isOpen && dropNum === 3 ? <Dropdown data={genList}/> : null}
                     </div>
                     <div className="relative select-none" id="dropdownButton" ref={dropNum === 4 ? dropRef : null}>
-                        <div onClick={() => {setIsOpen(!isOpen); setDropNum(4)}} id="button" className="h-12 w-44 text-black rounded-sm text-xl font-primary outline 
+                        <div onClick={() => {setIsOpen(!isOpen); setDropNum(4)}} id="button" className="h-12 w-44 text-black 
+                        rounded-sm text-xl font-primary outline 
                         outline-1 flex justify-between p-2 items-center cursor-pointer">
                             {engine}
                             <img src={downArrow} className="w-5 h-auto pl-2" />    
                         </div>
-                        {isOpen && dropNum === 4 ? <Dropdown data={cars.Brands.Audi.A3.gen_8l}/> : null}
+                        {isOpen && dropNum === 4 ? <Dropdown data={Engine}/> : null}
                     </div>
                     </div>
                 </div>
