@@ -43,7 +43,7 @@ const Dropdown = ({
 }: dropdownType) => {
   return (
     <div
-      className="absolute mt-[2px] max-h-64 overflow-y-scroll shadow-md border-gray-200 border-[1px] rounded-md"
+      className="absolute z-10 w-64 xl:w-60 mt-12 max-h-64 overflow-y-scroll shadow-md border-gray-200 rounded-b-md"
       id="dropdown"
     >
       {data
@@ -57,7 +57,7 @@ const Dropdown = ({
                   DataFetch ? DataFetch(element, nextState, ObjectId) : null;
                 }}
                 key={element}
-                className="h-12 w-60 p-2  border-gray-200 bg-white text-xl hover:bg-blue-500 cursor-pointer"
+                className="h-12 xl:h-16 p-2  border-gray-200 bg-white text-base hover:bg-blue-500 cursor-pointer active:bg-blue-900"
               >
                 {element}
               </div>
