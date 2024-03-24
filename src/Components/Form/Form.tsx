@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef, Dispatch } from "react";
+import { Link } from "react-router-dom";
 import downArrow from "./Img/down-arrow.svg";
 import Dropdown from "../Dropdown/Dropdown";
 
@@ -105,16 +106,16 @@ const Form = () => {
   };
 
   return (
-    <div className="flex justify-center font-sans w-full h-80 mb-20">
-      <div className="w-10/12 bg-slate-200 p-6 rounded-lg flex flex-col shadow-md">
+    <div className="flex justify-center font-sans h-full w-full mb-40">
+      <div className="w-full m-5 bg-slate-200 p-6 rounded-lg flex flex-col shadow-md">
         <div className="w-full">
           <h1 className="font-primary text-black text-4xl text-center">
             Choose a Manufactuer, Model, Generation and Engine!
           </h1>
         </div>
-        <div className="flex flex-row justify-center gap-x-20 pt-10">
+        <div className="flex flex-col xl:flex-row justify-center gap-x-20 gap-y-10 xl:gap-y-0 pt-10">
           <div
-            className="relative select-none"
+            className="relative select-none flex justify-center"
             id="dropdownButton"
             ref={dropNum === 1 ? dropRef : null}
           >
@@ -124,7 +125,7 @@ const Form = () => {
                 setDropNum(1);
               }}
               id="button"
-              className="h-12 w-60 text-black rounded-sm text-xl font-primary outline 
+              className="h-12 w-64 xl:w-60 text-black rounded-sm text-xl font-primary outline 
                             outline-1 flex justify-between p-2 items-center cursor-pointer"
             >
               {brand.name}
@@ -146,7 +147,7 @@ const Form = () => {
             ) : null}
           </div>
           <div
-            className="relative select-none"
+            className="relative select-none flex justify-center"
             id="dropdownButton"
             ref={dropNum === 2 ? dropRef : null}
           >
@@ -156,7 +157,7 @@ const Form = () => {
                 setDropNum(2);
               }}
               id="button"
-              className="h-12 w-60 text-black 
+              className="h-12 w-64 xl:w-60 text-black 
                         rounded-sm text-xl font-primary outline 
                         outline-1 flex justify-between p-2 items-center cursor-pointer"
             >
@@ -179,7 +180,7 @@ const Form = () => {
             ) : null}
           </div>
           <div
-            className="relative select-none"
+            className="relative select-none flex justify-center"
             id="dropdownButton"
             ref={dropNum === 3 ? dropRef : null}
           >
@@ -189,7 +190,7 @@ const Form = () => {
                 setDropNum(3);
               }}
               id="button"
-              className="h-12 w-60 text-black 
+              className="h-12 w-64 xl:w-60 text-black 
                         rounded-sm text-xl font-primary outline 
                         outline-1 flex justify-between p-2 items-center cursor-pointer"
             >
@@ -212,7 +213,7 @@ const Form = () => {
             ) : null}
           </div>
           <div
-            className="relative select-none"
+            className="relative select-none flex justify-center"
             id="dropdownButton"
             ref={dropNum === 4 ? dropRef : null}
           >
@@ -222,7 +223,7 @@ const Form = () => {
                 setDropNum(4);
               }}
               id="button"
-              className="h-12 w-60 text-black 
+              className="h-12 w-64 xl:w-60 text-black 
                         rounded-sm text-xl font-primary outline 
                         outline-1 flex justify-between p-2 items-center cursor-pointer"
             >
@@ -244,13 +245,15 @@ const Form = () => {
           </div>
         </div>
         {engine.name !== "Engine" ? (
-          <div className="h-full flex justify-center items-end pb-2 pointer-events-none">
-            <div
-              className="w-5/12 bg-indigo-500 p-6 rounded-md shadow-md text-center 
+          <div className="h-full flex justify-center items-end py-10 pointer-events-none">
+            <Link className="w-11/12 md:w-7/12 lg:w-5/12" to="/GetCar">
+              <div
+                className=" bg-indigo-500 p-6 rounded-md shadow-md text-center 
                             cursor-pointer hover:bg-indigo-600 active:bg-indigo-700 active select-none pointer-events-auto"
-            >
-              <p className="font-primary text-4xl">GET SPECS</p>
-            </div>
+              >
+                <p className="font-primary text-4xl">GET SPECS</p>
+              </div>
+            </Link>
           </div>
         ) : null}
       </div>
