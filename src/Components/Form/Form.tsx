@@ -9,7 +9,7 @@ const Data = async (
   id: string | undefined
 ): Promise<void> => {
   const response = await fetch(`http://localhost:3000/data/${id}/${type}`);
-  const data: any = await response.json();
+  const data = await response.json();
   if (set) {
     set(data);
   }
@@ -246,7 +246,11 @@ const Form = () => {
         </div>
         {engine.name !== "Engine" ? (
           <div className="h-full flex justify-center items-end py-10 pointer-events-none">
-            <Link className="w-11/12 md:w-7/12 lg:w-5/12" to="/GetCar">
+            <Link
+              className="w-11/12 md:w-7/12 lg:w-5/12"
+              to="/GetCar"
+              state={{ brand: brand, model: model, gen: gen, engine: engine }}
+            >
               <div
                 className=" bg-indigo-500 p-6 rounded-md shadow-md text-center 
                             cursor-pointer hover:bg-indigo-600 active:bg-indigo-700 active select-none pointer-events-auto"
