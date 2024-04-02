@@ -57,7 +57,7 @@ const Dropdown = ({
                   DataFetch ? DataFetch(element, nextState, ObjectId) : null;
                 }}
                 key={element}
-                className="h-12 xl:h-16 p-2  border-gray-200 bg-white text-base hover:bg-blue-500 cursor-pointer active:bg-blue-900"
+                className="h-12 xl:h-16 p-2 border-gray-200 bg-white text-base hover:bg-blue-500 cursor-pointer active:bg-blue-900 2xl:text-2xl"
               >
                 {element}
               </div>
