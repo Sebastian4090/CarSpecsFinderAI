@@ -26,7 +26,7 @@ const CarHeader = () => {
   return (
     <div className="flex w-full justify-center">
       <div className="flex flex-col md:flex-row w-11/12 md:w-9/12 lg:w-7/12 h-full m-5 p-5 border rounded-md shadow-lg bg-white">
-        <div className="flex flex-col justify-center items-center w-full md:w-2/4 text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-6xl font-primary">
+        <div className="flex flex-col justify-center items-center w-full md:w-2/4 text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-6xl text-center font-primary">
           <h1>{brand.name}</h1>
           <h1>{model.name}</h1>
           <h1>{gen.name}</h1>

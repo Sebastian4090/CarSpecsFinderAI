@@ -8,10 +8,14 @@ const Data = async (
   set: Dispatch<React.SetStateAction<string[]>> | undefined,
   id: string | undefined
 ): Promise<void> => {
-  const response = await fetch(`http://localhost:3000/data/${id}/${type}`);
-  const data = await response.json();
-  if (set) {
-    set(data);
+  try {
+    const response = await fetch(`http://localhost:3000/data/${id}/${type}`);
+    const data = await response.json();
+    if (set) {
+      set(data);
+    }
+  } catch (error) {
+    console.error("ERROR: ", error);
   }
 };
 
@@ -50,7 +54,13 @@ const Form = () => {
     name: "Engine",
     index: 3,
   });
-  const [engineList, setEngineList] = useState<string[]>(["1.6", "2.0"]); //for testing purposes
+  const [engineList, setEngineList] = useState<string[]>([
+    "1.6",
+    "2.0",
+    "4.0",
+    "3.0",
+    "5.0",
+  ]); //for testing purposes
 
   let dropRef = useRef<HTMLInputElement>(null);
 
@@ -90,17 +100,17 @@ const Form = () => {
         changeHandler(setGen, "Generation");
         setGenList([]);
         changeHandler(setEngine, "Engine");
-        setEngineList(["1.6", "2.0"]);
+        setEngineList(["1.6", "2.0", "4.0", "5.0"]);
         break;
       case 1:
         changeHandler(setGen, "Generation");
         setGenList([]);
         changeHandler(setEngine, "Engine");
-        setEngineList(["1.6", "2.0"]);
+        setEngineList(["1.6", "2.0", "4.0", "5.0"]);
         break;
       case 2:
         changeHandler(setEngine, "Engine");
-        setEngineList(["1.6", "2.0"]);
+        setEngineList(["1.6", "1.8", "2.0", "3.0", "4.0", "5.0"]);
         break;
     }
   };
