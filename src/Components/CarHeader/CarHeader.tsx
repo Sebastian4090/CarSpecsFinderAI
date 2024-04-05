@@ -7,10 +7,14 @@ const CarHeader = () => {
   const { brand, model, gen, engine } = location.state;
   const [image, setImage] = useState<string>("");
 
+  let genRefactor: string = gen.name.includes("/")
+    ? gen.name.substring(0, gen.name.indexOf("/"))
+    : gen.name;
+
   useEffect(() => {
     const getImage = async (): Promise<void> => {
       const response = await fetch(
-        `http://localhost:3000/image/${brand.name}%20${model.name}%20${gen.name}`
+        `http://localhost:3000/image/${brand.name}%20${model.name}%20${genRefactor}`
       );
       const data = await response.json();
       setImage(data);
