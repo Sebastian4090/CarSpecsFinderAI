@@ -9,7 +9,17 @@ const Data = async (
   id: string | undefined
 ): Promise<void> => {
   try {
-    const response = await fetch(`http://localhost:3000/data/${id}/${type}`);
+    let readyType: string;
+    if (type.includes("/")) {
+      // refactor type for fetching
+      readyType = type.split("/").join("=");
+    } else {
+      readyType = type;
+    }
+
+    const response = await fetch(
+      `http://localhost:3000/data/${id}/${readyType}`
+    );
     const data = await response.json();
     if (set) {
       set(data);
@@ -54,13 +64,7 @@ const Form = () => {
     name: "Engine",
     index: 3,
   });
-  const [engineList, setEngineList] = useState<string[]>([
-    "1.6",
-    "2.0",
-    "4.0",
-    "3.0",
-    "5.0",
-  ]); //for testing purposes
+  const [engineList, setEngineList] = useState<string[]>([]);
 
   let dropRef = useRef<HTMLInputElement>(null);
 
@@ -100,26 +104,26 @@ const Form = () => {
         changeHandler(setGen, "Generation");
         setGenList([]);
         changeHandler(setEngine, "Engine");
-        setEngineList(["1.6", "2.0", "4.0", "5.0"]);
+        setEngineList([]);
         break;
       case 1:
         changeHandler(setGen, "Generation");
         setGenList([]);
         changeHandler(setEngine, "Engine");
-        setEngineList(["1.6", "2.0", "4.0", "5.0"]);
+        setEngineList([]);
         break;
       case 2:
         changeHandler(setEngine, "Engine");
-        setEngineList(["1.6", "1.8", "2.0", "3.0", "4.0", "5.0"]);
+        setEngineList([]);
         break;
     }
   };
 
   return (
-    <div className="flex justify-center font-sans h-full w-full mb-40">
+    <div className="flex justify-center font-sans h-full w-full mb-40 2xl:mb-60">
       <div className="w-full m-5 bg-slate-200 p-6 rounded-lg flex flex-col shadow-md">
         <div className="w-full">
-          <h1 className="font-primary text-black text-4xl text-center">
+          <h1 className="font-primary text-black text-4xl text-center select-none">
             Choose a Manufactuer, Model, Generation and Engine!
           </h1>
         </div>
@@ -135,8 +139,8 @@ const Form = () => {
                 setDropNum(1);
               }}
               id="button"
-              className="h-12 w-64 xl:w-60 text-black rounded-sm text-xl font-primary outline 
-                            outline-1 flex justify-between p-2 items-center cursor-pointer"
+              className="h-12 w-64 xl:w-60 2xl:w-96 2xl:h-20 text-black rounded-md text-xl 2xl:text-3xl font-primary 
+                            outline-1 flex justify-between p-2 items-center cursor-pointer bg-white"
             >
               {brand.name}
               <img src={downArrow} className="w-5 h-auto pl-2" />
@@ -167,8 +171,8 @@ const Form = () => {
                 setDropNum(2);
               }}
               id="button"
-              className="h-12 w-64 xl:w-60 text-black 
-                        rounded-sm text-xl font-primary outline 
+              className="h-12 w-64 xl:w-60 2xl:w-96 2xl:h-20 text-black 
+                        rounded-sm text-xl 2xl:text-3xl font-primary bg-white 
                         outline-1 flex justify-between p-2 items-center cursor-pointer"
             >
               {model.name}
@@ -200,8 +204,8 @@ const Form = () => {
                 setDropNum(3);
               }}
               id="button"
-              className="h-12 w-64 xl:w-60 text-black 
-                        rounded-sm text-xl font-primary outline 
+              className="h-12 w-64 xl:w-60 2xl:w-96 2xl:h-20 text-black 
+                        rounded-sm text-xl 2xl:text-3xl font-primary bg-white 
                         outline-1 flex justify-between p-2 items-center cursor-pointer"
             >
               {gen.name}
@@ -210,8 +214,8 @@ const Form = () => {
             {isOpen && dropNum === 3 ? (
               <Dropdown
                 data={genList}
-                DataFetch={undefined}
-                ObjectId={"65fc073c0da0ac1bc6ed760a"}
+                DataFetch={Data}
+                ObjectId={"660fec83e7743b15665b0989"}
                 nextState={setEngineList}
                 set={setGen}
                 setIsOpen={setIsOpen}
@@ -219,6 +223,7 @@ const Form = () => {
                 handler={changeHandler}
                 resetState={resetState}
                 index={gen.index}
+                additionalInfo={model.name}
               />
             ) : null}
           </div>
@@ -233,8 +238,8 @@ const Form = () => {
                 setDropNum(4);
               }}
               id="button"
-              className="h-12 w-64 xl:w-60 text-black 
-                        rounded-sm text-xl font-primary outline 
+              className="h-12 w-64 xl:w-60 2xl:w-96 2xl:h-20 text-black 
+                        rounded-sm text-xl 2xl:text-3xl font-primary bg-white 
                         outline-1 flex justify-between p-2 items-center cursor-pointer"
             >
               {engine.name}
@@ -243,7 +248,7 @@ const Form = () => {
             {isOpen && dropNum === 4 ? (
               <Dropdown
                 data={engineList}
-                DataFetch={undefined}
+                DataFetch={null}
                 set={setEngine}
                 setIsOpen={setIsOpen}
                 isOpen={isOpen}

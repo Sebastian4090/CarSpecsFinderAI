@@ -27,6 +27,7 @@ type dropdownType = {
   ) => Promise<void> | undefined;
   ObjectId: string | undefined;
   nextState: Dispatch<React.SetStateAction<string[]>> | undefined;
+  additionalInfo?: string;
 };
 
 const Dropdown = ({
@@ -40,10 +41,11 @@ const Dropdown = ({
   DataFetch,
   ObjectId,
   nextState,
+  additionalInfo = "",
 }: dropdownType) => {
   return (
     <div
-      className="absolute z-10 w-64 xl:w-60 mt-12 max-h-64 overflow-y-scroll shadow-md border-gray-200 rounded-b-md"
+      className="absolute z-10 w-64 xl:w-60 2xl:w-96 mt-12 2xl:mt-20 max-h-64 overflow-y-scroll shadow-md border-gray-200 rounded-b-md"
       id="dropdown"
     >
       {data
@@ -54,10 +56,18 @@ const Dropdown = ({
                   handler(set, element);
                   setIsOpen(!isOpen);
                   resetState(index);
-                  DataFetch ? DataFetch(element, nextState, ObjectId) : null;
+                  DataFetch
+                    ? additionalInfo !== ""
+                      ? DataFetch(
+                          `${additionalInfo}_${element}`,
+                          nextState,
+                          ObjectId
+                        )
+                      : DataFetch(element, nextState, ObjectId)
+                    : null;
                 }}
                 key={element}
-                className="h-12 xl:h-16 p-2 border-gray-200 bg-white text-base hover:bg-blue-500 cursor-pointer active:bg-blue-900 2xl:text-2xl"
+                className="h-12 xl:h-16 2xl:h-20 p-2 border-gray-200 bg-white text-base hover:bg-blue-500 cursor-pointer active:bg-blue-900 2xl:text-3xl"
               >
                 {element}
               </div>
