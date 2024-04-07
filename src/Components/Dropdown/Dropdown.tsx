@@ -45,7 +45,7 @@ const Dropdown = ({
 }: dropdownType) => {
   return (
     <div
-      className="absolute z-10 w-64 xl:w-60 2xl:w-96 mt-12 2xl:mt-20 max-h-64 overflow-y-scroll shadow-md border-gray-200 rounded-b-md"
+      className="absolute z-10 w-64 xl:w-60 2xl:w-80 mt-12 2xl:mt-20 max-h-64 overflow-y-scroll shadow-md border-gray-200 rounded-b-md"
       id="dropdown"
     >
       {data
