@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef, Dispatch } from "react";
 import { Link } from "react-router-dom";
-import downArrow from "./Img/down-arrow.svg";
+import downArrow from "../../down-arrow.svg";
 import Dropdown from "../Dropdown/Dropdown";
 
 const Data = async (
