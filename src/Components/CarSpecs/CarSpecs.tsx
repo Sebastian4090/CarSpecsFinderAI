@@ -1,7 +1,7 @@
 import { useState, Dispatch } from "react";
 import { useLocation } from "react-router-dom";
 import CarSpecsData from "../CarSpecsData/CarSpecsData";
-import Arrow from "../Form/Img/down-arrow.svg";
+import Arrow from "../../down-arrow.svg";
 
 const specsFetch = async (
   set: Dispatch<React.SetStateAction<string[]>>,

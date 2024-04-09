@@ -1,5 +1,5 @@
 import Spinner from "../../Spinner.gif";
-import Arrow from "../Form/Img/down-arrow.svg";
+import Arrow from "../../down-arrow.svg";
 
 import { Dispatch } from "react";
 
