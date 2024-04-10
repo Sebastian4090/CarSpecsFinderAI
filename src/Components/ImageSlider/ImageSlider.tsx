@@ -1,16 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import arrow from "../../down-arrow.svg";
 
 type ImageSliderProps = {
   photosUrls: {
     url: string;
     alt: string;
-    msg: string;
+    text: string;
   }[];
 };
 
 const ImageSlider = ({ photosUrls }: ImageSliderProps) => {
   const [imageIndex, setImageIndex] = useState<number>(0);
+
+  // Autoplay
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (imageIndex !== photosUrls.length - 1) {
+        setImageIndex(imageIndex + 1);
+      } else {
+        setImageIndex(0);
+      }
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [imageIndex]);
 
   const showPrevImage = () => {
     setImageIndex((index) => {
@@ -29,7 +42,7 @@ const ImageSlider = ({ photosUrls }: ImageSliderProps) => {
   return (
     <section
       aria-label="Image Slider"
-      className="w-full h-full flex justify-center my-20"
+      className="w-full h-full flex justify-center my-10 xl:my-20"
     >
       <a
         href="#after-image-slider"
@@ -37,17 +50,27 @@ const ImageSlider = ({ photosUrls }: ImageSliderProps) => {
       >
         Skip Image Slider
       </a>
-      <div className="w-9/12 h-full flex justify-center relative shadow-2xl rounded-2xl overflow-hidden">
+      <div className="w-12/12 sm:w-11/12 lg:w-9/12 xl:w-8/12 2xl:w-7/12 h-full flex justify-center relative shadow-lg lg:shadow-2xl rounded-2xl overflow-hidden">
         <div className="w-full h-full flex overflow-hidden">
           {photosUrls.map(({ url, alt }, index) => (
-            <img
-              key={url}
-              src={url}
-              alt={alt}
-              aria-hidden={imageIndex !== index}
-              className="w-full h-auto rounded-2xl flex-shrink-0 flex-grow-0 transition-[translate] duration-300 ease-in-out motion-reduce:transition-none"
-              style={{ translate: `${-100 * imageIndex}%` }}
-            />
+            <>
+              <img
+                key={url}
+                src={url}
+                alt={alt}
+                aria-hidden={imageIndex !== index}
+                className="w-full h-auto rounded-2xl flex-shrink-0 flex-grow-0 transition-[translate] duration-300 ease-in-out motion-reduce:transition-none"
+                style={{ translate: `${-100 * imageIndex}%` }}
+              />
+              <div
+                className="flex absolute bg-black opacity-40 xl:top-0 xl:left-0 m-2 p-2 sm:m-8 sm:p-8 xl:m-10 xl:p-10 
+              2xl:p-10 2xl:m-10 max-w-2xl xl:max-w-4xl 2xl:max-w-4xl rounded-md"
+              >
+                <p className="font-primary text-lg sm:text-3xl xl:text-5xl 2xl:text-5xl text-white select-none">
+                  {photosUrls[imageIndex].text}
+                </p>
+              </div>
+            </>
           ))}
         </div>
         <button
@@ -57,7 +80,7 @@ const ImageSlider = ({ photosUrls }: ImageSliderProps) => {
         >
           <img
             src={arrow}
-            className="w-10 h-auto rotate-90 invert-[1] opacity-50 pointer-events-none"
+            className="w-8 sm:w-10 xl:w-12 2xl:w-14 h-auto rotate-90 invert-[1] opacity-50 pointer-events-none"
             alt="arrow-left"
             aria-label="View Previous Image"
           />
@@ -69,12 +92,12 @@ const ImageSlider = ({ photosUrls }: ImageSliderProps) => {
         >
           <img
             src={arrow}
-            className="w-10 h-auto -rotate-90 invert-[1] opacity-50 pointer-events-none"
+            className="w-8 sm:w-10 xl:w-12 2xl:w-14 h-auto -rotate-90 invert-[1] opacity-50 pointer-events-none"
             alt="arrow-right"
             aria-label="View Next Image"
           />
         </button>
-        <div className="flex w-full h-full absolute justify-center items-end p-5 gap-2">
+        <div className="flex w-full h-full absolute justify-center items-end p-2 sm:p-5 xl:p-6 2xl:p-7 gap-2">
           {photosUrls.map((_, index) => (
             <div
               key={index}
@@ -84,12 +107,12 @@ const ImageSlider = ({ photosUrls }: ImageSliderProps) => {
             >
               {index === imageIndex ? (
                 <button
-                  className="bg-indigo-700 border-[2px] border-indigo-700 rounded-full p-2
+                  className="bg-indigo-700 border-[2px] border-indigo-700 rounded-full p-2 xl:p-3
                  transition-transform duration-150 ease-in-out hover:scale-125 focus-visible:outline focus-visible:outline-white"
                 ></button>
               ) : (
                 <button
-                  className="rounded-full border-[2px] border-indigo-700 p-2 transition-transform
+                  className="rounded-full border-[2px] border-indigo-700 p-2 xl:p-3 transition-transform
                  duration-150 ease-in-out hover:scale-125 focus-visible:outline focus-visible:outline-white"
                 ></button>
               )}
