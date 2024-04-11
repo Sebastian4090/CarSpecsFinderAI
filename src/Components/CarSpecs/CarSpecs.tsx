@@ -1,6 +1,7 @@
 import { useState, Dispatch } from "react";
 import { useLocation } from "react-router-dom";
 import CarSpecsData from "../CarSpecsData/CarSpecsData";
+import ReturnTopButton from "../ReturnTopButton/ReturnTopButton";
 import Arrow from "../../down-arrow.svg";
 
 const specsFetch = async (
@@ -221,6 +222,7 @@ const CarSpecs = () => {
           ) : null}
         </div>
       </div>
+      <ReturnTopButton />
     </div>
   );
 };
