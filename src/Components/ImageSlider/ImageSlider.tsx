@@ -52,25 +52,32 @@ const ImageSlider = ({ photosUrls }: ImageSliderProps) => {
       </a>
       <div className="w-12/12 sm:w-11/12 lg:w-9/12 xl:w-8/12 2xl:w-7/12 h-full flex justify-center relative shadow-lg lg:shadow-2xl rounded-2xl overflow-hidden">
         <div className="w-full h-full flex overflow-hidden">
-          {photosUrls.map(({ url, alt }, index) => (
-            <>
+          {photosUrls.map(({ url, alt, text }, index) => (
+            <div
+              className="w-full h-auto rounded-2xl flex-shrink-0 flex-grow-0"
+              key={index}
+            >
               <img
                 key={url}
                 src={url}
                 alt={alt}
                 aria-hidden={imageIndex !== index}
-                className="w-full h-auto rounded-2xl flex-shrink-0 flex-grow-0 transition-[translate] duration-300 ease-in-out motion-reduce:transition-none"
+                className="w-full h-auto rounded-2xl transition-[translate] duration-300 ease-in-out motion-reduce:transition-none"
                 style={{ translate: `${-100 * imageIndex}%` }}
               />
               <div
+                key={alt}
                 className="flex absolute bg-black opacity-40 xl:top-0 xl:left-0 m-2 p-2 sm:m-8 sm:p-8 xl:m-10 xl:p-10 
               2xl:p-10 2xl:m-10 max-w-2xl xl:max-w-4xl 2xl:max-w-4xl rounded-md"
               >
-                <p className="font-primary text-lg sm:text-3xl xl:text-5xl 2xl:text-5xl text-white select-none">
+                <p
+                  key={text}
+                  className="font-primary text-lg sm:text-3xl xl:text-5xl 2xl:text-5xl text-white select-none"
+                >
                   {photosUrls[imageIndex].text}
                 </p>
               </div>
-            </>
+            </div>
           ))}
         </div>
         <button

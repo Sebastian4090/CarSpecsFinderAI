@@ -128,8 +128,8 @@ const Form = () => {
           </h1>
         </div>
         <div className="flex flex-col xl:flex-row justify-center gap-x-20 gap-y-10 xl:gap-y-0 pt-10">
-          <div
-            className="relative select-none flex justify-center"
+          <button
+            className="relative flex justify-center"
             id="dropdownButton"
             ref={dropNum === 1 ? dropRef : null}
           >
@@ -159,9 +159,9 @@ const Form = () => {
                 index={brand.index}
               />
             ) : null}
-          </div>
-          <div
-            className="relative select-none flex justify-center"
+          </button>
+          <button
+            className="relative flex justify-center"
             id="dropdownButton"
             ref={dropNum === 2 ? dropRef : null}
           >
@@ -192,9 +192,9 @@ const Form = () => {
                 index={model.index}
               />
             ) : null}
-          </div>
-          <div
-            className="relative select-none flex justify-center"
+          </button>
+          <button
+            className="relative flex justify-center"
             id="dropdownButton"
             ref={dropNum === 3 ? dropRef : null}
           >
@@ -226,9 +226,9 @@ const Form = () => {
                 additionalInfo={model.name}
               />
             ) : null}
-          </div>
-          <div
-            className="relative select-none flex justify-center"
+          </button>
+          <button
+            className="relative flex justify-center"
             id="dropdownButton"
             ref={dropNum === 4 ? dropRef : null}
           >
@@ -257,21 +257,21 @@ const Form = () => {
                 index={engine.index}
               />
             ) : null}
-          </div>
+          </button>
         </div>
         {engine.name !== "Engine" ? (
           <div className="h-full flex justify-center items-end py-10 pointer-events-none">
             <Link
-              className="w-11/12 md:w-7/12 lg:w-5/12"
+              className="w-11/12 md:w-7/12 lg:w-5/12 flex justify-center"
               to="/GetCar"
               state={{ brand: brand, model: model, gen: gen, engine: engine }}
             >
-              <div
-                className=" bg-indigo-500 p-6 rounded-md shadow-md text-center 
-                            cursor-pointer hover:bg-indigo-600 active:bg-indigo-700 active select-none pointer-events-auto"
+              <button
+                className=" bg-indigo-500 p-6 xl:p-8 xl:w-4/12 2xl:w-7/12 rounded-md shadow-md text-center 
+                            cursor-pointer hover:bg-indigo-600 active:bg-indigo-700 active pointer-events-auto"
               >
                 <p className="font-primary text-4xl">GET SPECS</p>
-              </div>
+              </button>
             </Link>
           </div>
         ) : null}
