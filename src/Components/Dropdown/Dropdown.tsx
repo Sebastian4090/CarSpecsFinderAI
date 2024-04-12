@@ -45,13 +45,13 @@ const Dropdown = ({
 }: dropdownType) => {
   return (
     <div
-      className="absolute z-10 w-64 xl:w-60 2xl:w-80 mt-12 2xl:mt-20 max-h-64 overflow-y-scroll shadow-md border-gray-200 rounded-b-md"
+      className="absolute z-10 w-64 xl:w-60 2xl:w-80 mt-12 2xl:mt-20 max-h-64 overflow-y-scroll shadow-md border-gray-200 rounded-b-md flex flex-col"
       id="dropdown"
     >
       {data
         ? data.map((element: string) => {
             return (
-              <div
+              <button
                 onClick={(e) => {
                   handler(set, element);
                   setIsOpen(!isOpen);
@@ -67,10 +67,12 @@ const Dropdown = ({
                     : null;
                 }}
                 key={element}
-                className="h-12 xl:h-16 2xl:h-20 p-2 border-gray-200 bg-white text-base hover:bg-blue-500 cursor-pointer active:bg-blue-900 2xl:text-3xl"
+                aria-label={`Choose ${element}`}
+                className="h-12 xl:h-16 2xl:h-20 p-4 border-gray-200 bg-white hover:bg-blue-500
+                 active:bg-blue-900 font-primary text-lg 2xl:text-3xl"
               >
                 {element}
-              </div>
+              </button>
             );
           })
         : null}

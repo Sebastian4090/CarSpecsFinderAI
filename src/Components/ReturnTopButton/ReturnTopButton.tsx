@@ -12,6 +12,14 @@ const ReturnTopButton = () => {
         setIsActiveButton(false);
       }
     });
+
+    return window.addEventListener("scroll", () => {
+      if (window.scrollY > 400) {
+        setIsActiveButton(true);
+      } else {
+        setIsActiveButton(false);
+      }
+    });
   }, []);
 
   const goToTop = () => {

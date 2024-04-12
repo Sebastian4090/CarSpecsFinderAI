@@ -120,7 +120,7 @@ const Form = () => {
   };
 
   return (
-    <div className="flex justify-center font-sans h-full w-full mb-40 2xl:mb-60">
+    <section className="flex justify-center font-sans h-full w-full mb-40 2xl:mb-60">
       <div className="w-full m-5 bg-slate-200 p-6 rounded-lg flex flex-col shadow-md">
         <div className="w-full">
           <h1 className="font-primary text-black text-4xl text-center select-none">
@@ -128,23 +128,24 @@ const Form = () => {
           </h1>
         </div>
         <div className="flex flex-col xl:flex-row justify-center gap-x-20 gap-y-10 xl:gap-y-0 pt-10">
-          <button
+          <div
             className="relative flex justify-center"
             id="dropdownButton"
             ref={dropNum === 1 ? dropRef : null}
           >
-            <div
+            <button
               onClick={(e) => {
                 setIsOpen(!isOpen);
                 setDropNum(1);
               }}
               id="button"
+              aria-label="Choose Brand"
               className="h-12 w-64 xl:w-60 2xl:w-80 2xl:h-20 text-black rounded-md text-xl 2xl:text-3xl font-primary 
                             outline-1 flex justify-between p-2 items-center cursor-pointer bg-white"
             >
               {brand.name}
-              <img src={downArrow} className="w-5 h-auto pl-2" />
-            </div>
+              <img src={downArrow} alt="arrow" className="w-5 h-auto pl-2" />
+            </button>
             {isOpen && dropNum === 1 ? (
               <Dropdown
                 data={brandList}
@@ -159,25 +160,26 @@ const Form = () => {
                 index={brand.index}
               />
             ) : null}
-          </button>
-          <button
+          </div>
+          <div
             className="relative flex justify-center"
             id="dropdownButton"
             ref={dropNum === 2 ? dropRef : null}
           >
-            <div
+            <button
               onClick={() => {
                 setIsOpen(!isOpen);
                 setDropNum(2);
               }}
               id="button"
+              aria-label="Choose Model"
               className="h-12 w-64 xl:w-60 2xl:w-80 2xl:h-20 text-black 
                         rounded-sm text-xl 2xl:text-3xl font-primary bg-white 
                         outline-1 flex justify-between p-2 items-center cursor-pointer"
             >
               {model.name}
-              <img src={downArrow} className="w-5 h-auto pl-2" />
-            </div>
+              <img src={downArrow} alt="arrow" className="w-5 h-auto pl-2" />
+            </button>
             {isOpen && dropNum === 2 ? (
               <Dropdown
                 data={modelList}
@@ -192,25 +194,26 @@ const Form = () => {
                 index={model.index}
               />
             ) : null}
-          </button>
-          <button
+          </div>
+          <div
             className="relative flex justify-center"
             id="dropdownButton"
             ref={dropNum === 3 ? dropRef : null}
           >
-            <div
+            <button
               onClick={() => {
                 setIsOpen(!isOpen);
                 setDropNum(3);
               }}
               id="button"
+              aria-label="Choose Generation"
               className="h-12 w-64 xl:w-60 2xl:w-80 2xl:h-20 text-black 
                         rounded-sm text-xl 2xl:text-3xl font-primary bg-white 
                         outline-1 flex justify-between p-2 items-center cursor-pointer"
             >
               {gen.name}
-              <img src={downArrow} className="w-5 h-auto pl-2" />
-            </div>
+              <img src={downArrow} alt="arrow" className="w-5 h-auto pl-2" />
+            </button>
             {isOpen && dropNum === 3 ? (
               <Dropdown
                 data={genList}
@@ -226,25 +229,26 @@ const Form = () => {
                 additionalInfo={model.name}
               />
             ) : null}
-          </button>
-          <button
+          </div>
+          <div
             className="relative flex justify-center"
             id="dropdownButton"
             ref={dropNum === 4 ? dropRef : null}
           >
-            <div
+            <button
               onClick={() => {
                 setIsOpen(!isOpen);
                 setDropNum(4);
               }}
               id="button"
+              aria-label="Choose Engine"
               className="h-12 w-64 xl:w-60 2xl:w-80 2xl:h-20 text-black 
                         rounded-sm text-xl 2xl:text-3xl font-primary bg-white 
                         outline-1 flex justify-between p-2 items-center cursor-pointer"
             >
               {engine.name}
-              <img src={downArrow} className="w-5 h-auto pl-2" />
-            </div>
+              <img src={downArrow} alt="arrow" className="w-5 h-auto pl-2" />
+            </button>
             {isOpen && dropNum === 4 ? (
               <Dropdown
                 data={engineList}
@@ -257,18 +261,19 @@ const Form = () => {
                 index={engine.index}
               />
             ) : null}
-          </button>
+          </div>
         </div>
         {engine.name !== "Engine" ? (
           <div className="h-full flex justify-center items-end py-10 pointer-events-none">
             <Link
-              className="w-11/12 md:w-7/12 lg:w-5/12 flex justify-center"
+              className="flex justify-center"
               to="/GetCar"
               state={{ brand: brand, model: model, gen: gen, engine: engine }}
             >
               <button
-                className=" bg-indigo-500 p-6 xl:p-8 xl:w-4/12 2xl:w-7/12 rounded-md shadow-md text-center 
+                className=" bg-indigo-500 p-6 xl:p-8 rounded-md shadow-md text-center 
                             cursor-pointer hover:bg-indigo-600 active:bg-indigo-700 active pointer-events-auto"
+                aria-label="Get Specs"
               >
                 <p className="font-primary text-4xl">GET SPECS</p>
               </button>
@@ -276,7 +281,7 @@ const Form = () => {
           </div>
         ) : null}
       </div>
-    </div>
+    </section>
   );
 };
 
