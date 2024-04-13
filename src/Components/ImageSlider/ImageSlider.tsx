@@ -67,12 +67,12 @@ const ImageSlider = ({ photosUrls }: ImageSliderProps) => {
               />
               <div
                 key={alt}
-                className="flex absolute bg-black opacity-40 xl:top-0 xl:left-0 m-2 p-2 sm:m-8 sm:p-8 xl:m-10 xl:p-10 
-              2xl:p-10 2xl:m-10 max-w-2xl xl:max-w-4xl 2xl:max-w-4xl rounded-md"
+                className="flex absolute bg-black opacity-40 top-0 left-0 m-2 p-2 sm:m-6 sm:p-6 md:m-8 md:p-8 xl:m-10
+              2xl:m-10 max-w-2xl xl:max-w-4xl 2xl:max-w-5xl rounded-md"
               >
                 <p
                   key={text}
-                  className="font-primary text-lg sm:text-3xl xl:text-5xl 2xl:text-5xl text-white select-none"
+                  className="font-primary text-sm sm:text-2xl xl:text-3xl 2xl:text-4xl text-pretty text-white select-none"
                 >
                   {photosUrls[imageIndex].text}
                 </p>

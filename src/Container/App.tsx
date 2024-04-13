@@ -11,7 +11,7 @@ const ImageSliderPhotos = [
   {
     url: "https://images.pexels.com/photos/13627424/pexels-photo-13627424.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     alt: "Silver Audi S3 on the Road",
-    text: "Get to know your car better!",
+    text: "Introducing First AI powered car specifications website in the WORLD!",
   },
   {
     url: "https://images.pexels.com/photos/6920503/pexels-photo-6920503.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -26,7 +26,7 @@ const ImageSliderPhotos = [
   {
     url: "https://images.pexels.com/photos/12351471/pexels-photo-12351471.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     alt: "A Classic Convertible Mercedes Benz on the Road",
-    text: "Discover classic cars of your dreams!",
+    text: "Get to know your car better!",
   },
 ];
 

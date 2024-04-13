@@ -69,7 +69,7 @@ const Dropdown = ({
                 key={element}
                 aria-label={`Choose ${element}`}
                 className="h-12 xl:h-16 2xl:h-20 p-4 border-gray-200 bg-white hover:bg-blue-500
-                 active:bg-blue-900 font-primary text-lg 2xl:text-3xl"
+                 active:bg-blue-900 font-primary text-lg leading-4 2xl:text-2xl flex-shrink-0 flex-grow-0 overflow-clip select-none"
               >
                 {element}
               </button>

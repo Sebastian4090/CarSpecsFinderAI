@@ -140,7 +140,7 @@ const Form = () => {
               }}
               id="button"
               aria-label="Choose Brand"
-              className="h-12 w-64 xl:w-60 2xl:w-80 2xl:h-20 text-black rounded-md text-xl 2xl:text-3xl font-primary 
+              className="h-12 w-64 xl:w-60 2xl:w-80 2xl:h-20 text-black rounded-md text-lg 2xl:text-2xl font-primary 
                             outline-1 flex justify-between p-2 items-center cursor-pointer bg-white"
             >
               {brand.name}
@@ -174,7 +174,7 @@ const Form = () => {
               id="button"
               aria-label="Choose Model"
               className="h-12 w-64 xl:w-60 2xl:w-80 2xl:h-20 text-black 
-                        rounded-sm text-xl 2xl:text-3xl font-primary bg-white 
+                        rounded-sm text-lg 2xl:text-2xl font-primary bg-white 
                         outline-1 flex justify-between p-2 items-center cursor-pointer"
             >
               {model.name}
@@ -208,7 +208,7 @@ const Form = () => {
               id="button"
               aria-label="Choose Generation"
               className="h-12 w-64 xl:w-60 2xl:w-80 2xl:h-20 text-black 
-                        rounded-sm text-xl 2xl:text-3xl font-primary bg-white 
+                        rounded-sm text-lg 2xl:text-2xl font-primary bg-white 
                         outline-1 flex justify-between p-2 items-center cursor-pointer"
             >
               {gen.name}
@@ -243,7 +243,7 @@ const Form = () => {
               id="button"
               aria-label="Choose Engine"
               className="h-12 w-64 xl:w-60 2xl:w-80 2xl:h-20 text-black 
-                        rounded-sm text-xl 2xl:text-3xl font-primary bg-white 
+                        rounded-sm text-lg 2xl:text-2xl font-primary bg-white 
                         outline-1 flex justify-between p-2 items-center cursor-pointer"
             >
               {engine.name}
