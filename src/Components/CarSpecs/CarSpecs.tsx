@@ -81,10 +81,11 @@ const CarSpecs = () => {
     useState<boolean>(false);
 
   return (
-    <div className="w-full flex flex-col justify-center items-center gap-10 mb-20">
+    <section className="w-full flex flex-col justify-center items-center gap-10 mb-20">
       <div className="flex flex-col justify-center items-center w-11/12 bg-white rounded-md shadow-lg">
-        <div
-          className="flex flex-row w-full p-5 cursor-pointer"
+        <button
+          className="flex flex-row w-full p-5"
+          aria-label="Get Engine Specs"
           onClick={() => {
             engineData.length === 0 ? specsFetch(setEngineData, 1, car) : null;
             setEngineStatus(!engineStatus);
@@ -96,7 +97,7 @@ const CarSpecs = () => {
             </p>
             <img src={Arrow} className="w-5 select-none" alt="arrow" />
           </div>
-        </div>
+        </button>
         <div className="flex justify-center items-center w-full">
           {engineStatus ? (
             <CarSpecsData data={engineData} set={setEngineStatus} />
@@ -104,8 +105,9 @@ const CarSpecs = () => {
         </div>
       </div>
       <div className="flex flex-col justify-center items-center w-11/12 bg-white rounded-md shadow-lg">
-        <div
-          className="flex flex-row w-full p-5 cursor-pointer"
+        <button
+          className="flex flex-row w-full p-5"
+          aria-label="Get Suspension Specs"
           onClick={() => {
             suspensionData.length === 0
               ? specsFetch(setSuspensionData, 2, car)
@@ -119,7 +121,7 @@ const CarSpecs = () => {
             </p>
             <img src={Arrow} className="w-5 select-none" alt="arrow" />
           </div>
-        </div>
+        </button>
         <div className="flex justify-center items-center w-full">
           {suspensionStatus ? (
             <CarSpecsData data={suspensionData} set={setSuspensionStatus} />
@@ -127,8 +129,9 @@ const CarSpecs = () => {
         </div>
       </div>
       <div className="flex flex-col justify-center items-center w-11/12 bg-white rounded-md shadow-lg">
-        <div
-          className="flex flex-row w-full p-5 cursor-pointer"
+        <button
+          className="flex flex-row w-full p-5"
+          aria-label="Get Size And Dimensions Specs"
           onClick={() => {
             sizeDimensionData.length === 0
               ? specsFetch(setSizeDimensionData, 3, car)
@@ -142,7 +145,7 @@ const CarSpecs = () => {
             </p>
             <img src={Arrow} className="w-5 select-none" alt="arrow" />
           </div>
-        </div>
+        </button>
         <div className="flex justify-center items-center w-full">
           {sizeDimensionStatus ? (
             <CarSpecsData
@@ -153,8 +156,9 @@ const CarSpecs = () => {
         </div>
       </div>
       <div className="flex flex-col justify-center items-center w-11/12 bg-white rounded-md shadow-lg">
-        <div
-          className="flex flex-row w-full p-5 cursor-pointer"
+        <button
+          className="flex flex-row w-full p-5"
+          aria-label="Get Fuel Consumption Specs"
           onClick={() => {
             fuelData.length === 0 ? specsFetch(setFuelData, 4, car) : null;
             setFuelStatus(!fuelStatus);
@@ -166,7 +170,7 @@ const CarSpecs = () => {
             </p>
             <img src={Arrow} className="w-5 select-none" alt="arrow" />
           </div>
-        </div>
+        </button>
         <div className="flex justify-center items-center w-full">
           {fuelStatus ? (
             <CarSpecsData data={fuelData} set={setFuelStatus} />
@@ -174,8 +178,9 @@ const CarSpecs = () => {
         </div>
       </div>
       <div className="flex flex-col justify-center items-center w-11/12 bg-white rounded-md shadow-lg">
-        <div
-          className="flex flex-row w-full p-5 cursor-pointer"
+        <button
+          className="flex flex-row w-full p-5"
+          aria-label="Get Transmission Specs"
           onClick={() => {
             transmissionData.length === 0
               ? specsFetch(setTransmissionData, 5, car)
@@ -189,7 +194,7 @@ const CarSpecs = () => {
             </p>
             <img src={Arrow} className="w-5 select-none" alt="arrow" />
           </div>
-        </div>
+        </button>
         <div className="flex justify-center items-center w-full">
           {transmissionStatus ? (
             <CarSpecsData data={transmissionData} set={setTransmissionStatus} />
@@ -197,8 +202,9 @@ const CarSpecs = () => {
         </div>
       </div>
       <div className="flex flex-col justify-center items-center w-11/12 bg-white rounded-md shadow-lg">
-        <div
-          className="flex flex-row w-full p-5 cursor-pointer"
+        <button
+          className="flex flex-row w-full p-5"
+          aria-label="Get Common Problems"
           onClick={() => {
             commonProblemsData.length === 0
               ? specsFetch(setCommonProblemsData, 6, car)
@@ -212,7 +218,7 @@ const CarSpecs = () => {
             </p>
             <img src={Arrow} className="w-5 select-none" alt="arrow" />
           </div>
-        </div>
+        </button>
         <div className="flex justify-center items-center w-full">
           {commonProblemsStatus ? (
             <CarSpecsData
@@ -223,7 +229,7 @@ const CarSpecs = () => {
         </div>
       </div>
       <ReturnTopButton />
-    </div>
+    </section>
   );
 };
 
