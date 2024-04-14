@@ -227,8 +227,8 @@ const CarSpecs = () => {
             />
           ) : null}
         </div>
+        <ReturnTopButton />
       </div>
-      <ReturnTopButton />
     </section>
   );
 };
