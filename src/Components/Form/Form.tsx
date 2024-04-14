@@ -5,8 +5,8 @@ import Dropdown from "../Dropdown/Dropdown";
 
 const Data = async (
   type: string,
-  set: Dispatch<React.SetStateAction<string[]>> | undefined,
-  id: string | undefined
+  set?: Dispatch<React.SetStateAction<string[]>>,
+  id?: string
 ): Promise<void> => {
   try {
     let readyType: string;
@@ -35,7 +35,7 @@ const Form = () => {
 
   const [brand, setBrand] = useState<{
     name: string;
-    index: number | undefined;
+    index?: number;
   }>({
     name: "Brands",
     index: 0,
@@ -44,14 +44,14 @@ const Form = () => {
 
   const [model, setModel] = useState<{
     name: string;
-    index: number | undefined;
+    index?: number;
   }>({
     name: "Model",
     index: 1,
   });
   const [modelList, setModelList] = useState<string[]>([]);
 
-  const [gen, setGen] = useState<{ name: string; index: number | undefined }>({
+  const [gen, setGen] = useState<{ name: string; index?: number }>({
     name: "Generation",
     index: 2,
   });
@@ -59,7 +59,7 @@ const Form = () => {
 
   const [engine, setEngine] = useState<{
     name: string;
-    index: number | undefined;
+    index?: number;
   }>({
     name: "Engine",
     index: 3,
@@ -86,17 +86,13 @@ const Form = () => {
   }, []);
 
   const changeHandler = (
-    set:
-      | Dispatch<
-          React.SetStateAction<{ name: string; index: number | undefined }>
-        >
-      | undefined,
-    value: string
+    set?: Dispatch<React.SetStateAction<{ name: string; index?: number }>>,
+    value?: string
   ) => {
-    set((prevValues: object) => ({ ...prevValues, name: value }));
+    set ? set((prevValues: object) => ({ ...prevValues, name: value })) : null;
   };
 
-  const resetState = (id: number | undefined) => {
+  const resetState = (id?: number) => {
     switch (id) {
       case 0:
         changeHandler(setModel, "Model");
@@ -252,7 +248,6 @@ const Form = () => {
             {isOpen && dropNum === 4 ? (
               <Dropdown
                 data={engineList}
-                DataFetch={null}
                 set={setEngine}
                 setIsOpen={setIsOpen}
                 isOpen={isOpen}

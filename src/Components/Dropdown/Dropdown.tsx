@@ -5,28 +5,24 @@ type dropdownType = {
   set: Dispatch<
     React.SetStateAction<{
       name: string;
-      index: number | undefined;
+      index?: number;
     }>
   >;
   setIsOpen: Dispatch<React.SetStateAction<boolean>>;
   isOpen: boolean;
   handler: (
-    set:
-      | Dispatch<
-          React.SetStateAction<{ name: string; index: number | undefined }>
-        >
-      | undefined,
-    value: string
+    set?: Dispatch<React.SetStateAction<{ name: string; index?: number }>>,
+    value?: string
   ) => void;
-  resetState: (id: number | undefined) => void;
-  index: number | undefined;
-  DataFetch: (
+  resetState: (id?: number) => void;
+  index?: number;
+  DataFetch?: (
     type: string,
-    set: Dispatch<React.SetStateAction<string[]>> | undefined,
-    id: string | undefined
-  ) => Promise<void> | undefined;
-  ObjectId: string | undefined;
-  nextState: Dispatch<React.SetStateAction<string[]>> | undefined;
+    set?: Dispatch<React.SetStateAction<string[]>>,
+    id?: string
+  ) => Promise<void>;
+  ObjectId?: string;
+  nextState?: Dispatch<React.SetStateAction<string[]>>;
   additionalInfo?: string;
 };
 
