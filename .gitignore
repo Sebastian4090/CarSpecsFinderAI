@@ -13,6 +13,7 @@ Data
 dist
 dist-ssr
 *.local
+CarHeader.test.tsx
 
 # Editor directories and files
 .vscode/*
