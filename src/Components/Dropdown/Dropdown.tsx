@@ -48,7 +48,7 @@ const Dropdown = ({
         ? data.map((element: string) => {
             return (
               <button
-                onClick={(e) => {
+                onClick={() => {
                   handler(set, element);
                   setIsOpen(!isOpen);
                   resetState(index);
