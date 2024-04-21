@@ -20,6 +20,11 @@ const Data = async (
     const response = await fetch(
       `http://localhost:3000/data/${id}/${readyType}`
     );
+
+    if (!response.ok) {
+      throw new Error(`Error status ${response.status}`);
+    }
+
     const data = await response.json();
     if (set) {
       set(data);
@@ -130,7 +135,7 @@ const Form = () => {
             ref={dropNum === 1 ? dropRef : null}
           >
             <button
-              onClick={(e) => {
+              onClick={() => {
                 setIsOpen(!isOpen);
                 setDropNum(1);
               }}
