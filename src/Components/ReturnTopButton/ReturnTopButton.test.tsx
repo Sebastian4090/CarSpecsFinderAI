@@ -1,7 +1,8 @@
 import { render, fireEvent, waitFor, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import ReturnTopButton from "./ReturnTopButton";
 
-describe("ReturnTopButton", () => {
+describe("<ReturnTopButton /> Component", () => {
   const scrollToMock = vi.fn();
 
   beforeEach(() => {
@@ -28,7 +29,7 @@ describe("ReturnTopButton", () => {
     fireEvent.scroll(window, { target: { scrollY: 500 } });
     await waitFor(() => {
       const button = screen.getByRole("button", { name: /Return to Top/i });
-      fireEvent.click(button);
+      userEvent.click(button);
       expect(window.scrollTo).toHaveBeenCalledWith({
         top: 0,
         behavior: "smooth",
