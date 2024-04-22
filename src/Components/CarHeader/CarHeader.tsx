@@ -13,18 +13,18 @@ const CarHeader = () => {
 
   useEffect(() => {
     const getImage = async (): Promise<void> => {
-      const response = await fetch(
-        `http://localhost:3000/image/${brand.name}%20${model.name}%20${genRefactor}`
-      );
-      const data = await response.json();
-      setImage(data);
+      try {
+        const response = await fetch(
+          `http://localhost:3000/image/${brand.name}%20${model.name}%20${genRefactor}`
+        );
+        const data = await response.json();
+        setImage(data);
+      } catch (err) {
+        console.error("Error fetching image" + err);
+      }
     };
 
     getImage();
-
-    return () => {
-      getImage();
-    };
   }, []);
 
   return (
@@ -42,9 +42,10 @@ const CarHeader = () => {
               src={image}
               className="w-full h-auto shadow-md rounded-lg"
               alt="car_image"
+              aria-label={`${brand.name} ${model.name} ${gen.name} image`}
             />
           ) : (
-            <img src={Spinner} alt="Loading..." />
+            <img src={Spinner} alt="Loading..." aria-label="Please wait" />
           )}
         </div>
       </div>

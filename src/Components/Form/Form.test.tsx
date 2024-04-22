@@ -1,5 +1,5 @@
 import Form from "./Form";
-import { render, waitFor, screen, act } from "@testing-library/react";
+import { render, waitFor, screen } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import { Mock } from "vitest";
 
