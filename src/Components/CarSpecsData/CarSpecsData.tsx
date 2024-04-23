@@ -4,7 +4,7 @@ import Arrow from "../../down-arrow.svg";
 import { Dispatch } from "react";
 
 type CarSpecsType = {
-  data: object;
+  data: object | string;
   set: Dispatch<React.SetStateAction<boolean>>;
 };
 
@@ -28,6 +28,15 @@ const CarSpecsData = ({ data, set }: CarSpecsType) => {
               </div>
             );
           })
+        ) : data === "" ? (
+          <div className="flex w-full justify-center items-center md:col-start-2 lg:col-end-4 xl:col-end-5 2xl:col-end-8">
+            <h1
+              className="flex text-center font-primary text-xl"
+              aria-label="AI Error"
+            >
+              There was an error with AI. Please try again later.
+            </h1>
+          </div>
         ) : (
           <div className="flex w-full justify-center items-center md:col-start-2 lg:col-end-4 xl:col-end-5 2xl:col-end-8">
             <img src={Spinner} alt="Spinner" aria-label="Loading..." />
