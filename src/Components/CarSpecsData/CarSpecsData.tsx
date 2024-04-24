@@ -9,13 +9,14 @@ type CarSpecsType = {
 };
 
 const CarSpecsData = ({ data, set }: CarSpecsType) => {
+  console.log(data);
   return (
     <section className="flex w-full justify-center items-center flex-col">
       <div
         className="flex flex-col md:grid md:grid-cols-3 md:grid-auto-rows md:auto-rows-[1fr] lg:grid-cols-4 xl:grid-cols-5
     2xl:grid-cols-8 w-11/12 justify-center items-center gap-4 my-5"
       >
-        {Object.keys(data).length > 0 ? (
+        {Object.keys(data).length > 0 && typeof data !== "string" ? (
           Object.entries(data).map((element: any) => {
             return (
               <div
@@ -28,11 +29,11 @@ const CarSpecsData = ({ data, set }: CarSpecsType) => {
               </div>
             );
           })
-        ) : data === "" ? (
+        ) : typeof data === "string" ? (
           <div className="flex w-full justify-center items-center md:col-start-2 lg:col-end-4 xl:col-end-5 2xl:col-end-8">
             <h1
               className="flex text-center font-primary text-xl"
-              aria-label="AI Error"
+              aria-label="Error"
             >
               There was an error with AI. Please try again later.
             </h1>
