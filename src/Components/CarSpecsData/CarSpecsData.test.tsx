@@ -16,10 +16,10 @@ describe("<CarSpecsData /> Component", () => {
     expect(spinner).toBeInTheDocument();
   });
 
-  it("should display error message when recieving empty string response", async () => {
-    render(<CarSpecsData data={""} set={() => {}} />);
+  it("should display error message when recieving Error string response", async () => {
+    render(<CarSpecsData data={"Error"} set={() => {}} />);
     const errorMessage = await screen.getByRole("heading", {
-      name: /AI Error/i,
+      name: /Error/i,
     });
     expect(errorMessage).toBeInTheDocument();
   });
@@ -36,7 +36,7 @@ describe("<CarSpecsData /> Component", () => {
       }
     } else {
       throw new Error(
-        "Number of matching elements displayed does not match number of elements provided"
+        "Number of matching elements does not match number of elements provided"
       );
     }
   });
