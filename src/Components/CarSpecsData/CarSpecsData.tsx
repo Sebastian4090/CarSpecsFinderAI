@@ -9,7 +9,6 @@ type CarSpecsType = {
 };
 
 const CarSpecsData = ({ data, set }: CarSpecsType) => {
-  console.log(data);
   return (
     <section className="flex w-full justify-center items-center flex-col">
       <div
