@@ -75,4 +75,18 @@ describe("<CarHeader /> Component", () => {
 
     screen.debug();
   });
+
+  it("should display error message when encountering error", async () => {
+    const mockFetch = vi.fn(async () => {
+      throw new Error("Internal server error");
+    });
+
+    global.fetch = mockFetch as Mock;
+
+    render(<CarHeader />);
+
+    await waitFor(() => {
+      expect(screen.getByText(/Error/i)).toBeInTheDocument();
+    });
+  });
 });

@@ -20,6 +20,7 @@ const CarHeader = () => {
         const data = await response.json();
         setImage(data);
       } catch (err) {
+        setImage("error");
         console.error("Error fetching image" + err);
       }
     };
@@ -37,13 +38,17 @@ const CarHeader = () => {
           <h1>{engine.name}</h1>
         </div>
         <div className="flex justify-center items-center mt-5 md:mt-0 md:w-2/4">
-          {image ? (
+          {image && image !== "error" ? (
             <img
               src={image}
               className="w-full h-auto shadow-md rounded-lg"
               alt="car_image"
               aria-label={`${brand.name} ${model.name} ${gen.name} image`}
             />
+          ) : image === "error" ? (
+            <h1 className="flex text-center font-primary text-xl">
+              Error fetching image
+            </h1>
           ) : (
             <img src={Spinner} alt="Loading..." aria-label="Please wait" />
           )}
