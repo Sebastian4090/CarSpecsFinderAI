@@ -274,6 +274,12 @@ const Form = () => {
                 className=" bg-indigo-500 p-6 xl:p-8 rounded-md shadow-md text-center 
                             cursor-pointer hover:bg-indigo-600 active:bg-indigo-700 active pointer-events-auto"
                 aria-label="Get Specs"
+                onClick={() =>
+                  window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                  })
+                }
               >
                 <p className="font-primary text-4xl">GET SPECS</p>
               </button>
