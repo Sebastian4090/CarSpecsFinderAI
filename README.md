@@ -1,32 +1,22 @@
-# React + TypeScript + Vite
+# CarSpecsFinderAI
+### It's an AI-powered site for vehicle specifications. 
+Built with Vite, it provides specs for any vehicle you choose.<br>
+It's screen reader friendly and motion safe.<br>
+<br>
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/Sebastian4090/CarSpecsFinderAI)
 
-# WORK IN PROGRESS
+## How to use?
+Just simply select a <b>brand</b>, <b>model</b>, <b>generation</b>, <b>engine (displacement)</b> and click <b>"GET SPECS"</b> button.<br>
+You'll get a vehicle photo and detailed info on specifications including even common problems.
+<br><br>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Developed using:<br>
+[![List](https://skillicons.dev/icons?i=vite,react,ts,tailwind,mongodb,vitest)](https://skillicons.dev)<br><br>
 
-Currently, two official plugins are available:
+## API
+https://github.com/Sebastian4090/CarSpecsFinderAI-API<br><br>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Contributing
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Pull requests are welcome. For major changes, please open an issue first
+to discuss what you would like to change.
