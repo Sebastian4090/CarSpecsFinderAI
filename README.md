@@ -6,7 +6,8 @@ It's screen reader friendly and motion safe.<br>
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/Sebastian4090/CarSpecsFinderAI)
 
 ## How to use?
-Just simply select a <b>brand</b>, <b>model</b>, <b>generation</b>, <b>engine (displacement)</b> and click <b>"GET SPECS"</b> button.<br>
+### Enter this link: https://carspecsfinderai.onrender.com
+Select a <b>brand</b>, <b>model</b>, <b>generation</b>, <b>engine (displacement)</b> and click <b>"GET SPECS"</b> button.<br>
 You'll get a vehicle photo and detailed info on specifications including even common problems.
 <br><br>
 
