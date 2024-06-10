@@ -18,7 +18,7 @@ const Data = async (
     }
 
     const response = await fetch(
-      `http://localhost:3000/data/${id}/${readyType}`
+      `${import.meta.env.VITE_REACT_APP_DATA}/${id}/${readyType}`
     );
 
     if (!response.ok) {
@@ -82,11 +82,11 @@ const Form = () => {
     };
 
     document.addEventListener("mousedown", handler);
-    Data("Brands", setBrandList, "65f046a87e9d5263e088681c");
+    Data("Brands", setBrandList, import.meta.env.VITE_REACT_APP_BRANDS_ID);
 
     return () => {
       document.removeEventListener("mousedown", handler);
-      Data("Brands", setBrandList, "65f046a87e9d5263e088681c");
+      Data("Brands", setBrandList, import.meta.env.VITE_REACT_APP_BRANDS_ID);
     };
   }, []);
 
@@ -151,7 +151,7 @@ const Form = () => {
               <Dropdown
                 data={brandList}
                 DataFetch={Data}
-                ObjectId={"65f046b17e9d5263e088681d"}
+                ObjectId={import.meta.env.VITE_REACT_APP_MODEL_ID}
                 nextState={setModelList}
                 set={setBrand}
                 setIsOpen={setIsOpen}
@@ -185,7 +185,7 @@ const Form = () => {
               <Dropdown
                 data={modelList}
                 DataFetch={Data}
-                ObjectId={"65fc073c0da0ac1bc6ed760a"}
+                ObjectId={import.meta.env.VITE_REACT_APP_GEN_ID}
                 nextState={setGenList}
                 set={setModel}
                 setIsOpen={setIsOpen}
@@ -219,7 +219,7 @@ const Form = () => {
               <Dropdown
                 data={genList}
                 DataFetch={Data}
-                ObjectId={"660fec83e7743b15665b0989"}
+                ObjectId={import.meta.env.VITE_REACT_APP_ENGINE_ID}
                 nextState={setEngineList}
                 set={setGen}
                 setIsOpen={setIsOpen}

@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import CarHeader from "./CarHeader";
 import { useLocation } from "react-router-dom";
-import { Mock } from "vitest";
+import { vi, Mock } from "vitest";
 
 vi.mock("react-router-dom", () => {
   const originalModule = vi.importActual("react-router-dom");
@@ -33,7 +33,7 @@ describe("<CarHeader /> Component", () => {
     },
   };
 
-  useLocation.mockReturnValue(location);
+  (useLocation as Mock).mockReturnValue(location);
 
   it("should render car details correctly", async () => {
     render(<CarHeader />);
@@ -55,13 +55,13 @@ describe("<CarHeader /> Component", () => {
     ).toBeInTheDocument();
   });
 
-  it("should fetch, recieve and display image", async () => {
+  it("should fetch, receive and display image", async () => {
     render(<CarHeader />);
 
     await waitFor(() => {
       expect(mockFetch).toHaveBeenCalledOnce();
       expect(mockFetch).toHaveBeenCalledWith(
-        "http://localhost:3000/image/BMW%205 Series%20F10"
+        `${import.meta.env.VITE_REACT_APP_IMAGE}/BMW%205 Series%20F10`
       );
     });
 
@@ -77,11 +77,11 @@ describe("<CarHeader /> Component", () => {
   });
 
   it("should display error message when encountering error", async () => {
-    const mockFetch = vi.fn(async () => {
+    const errorFetch = vi.fn(async () => {
       throw new Error("Internal server error");
     });
 
-    global.fetch = mockFetch as Mock;
+    global.fetch = errorFetch as Mock;
 
     render(<CarHeader />);
 

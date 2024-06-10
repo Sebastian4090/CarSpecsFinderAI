@@ -49,7 +49,7 @@ const CarSpecsData = ({ data, set }: CarSpecsType) => {
             className="flex justify-center items-center w-3/12 md:w-1/12 2xl:w-20 font-primary text-xl p-3 md:p-3 xl:p-5 2xl:p-3 border 
             rounded-full cursor-pointer md:place-self-center m-5"
             aria-label="Close window"
-            onClick={(e) => set(false)}
+            onClick={() => set(false)}
           >
             <img src={Arrow} className="w-40 rotate-180" alt="arrow" />
           </button>

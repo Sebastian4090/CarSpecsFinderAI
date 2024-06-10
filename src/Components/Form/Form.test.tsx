@@ -38,7 +38,7 @@ describe("<Form /> Component", () => {
     render(<Form />);
     await waitFor(() => expect(fetch).toHaveBeenCalledOnce());
     expect(fetch).toHaveBeenCalledWith(
-      "http://localhost:3000/data/65f046a87e9d5263e088681c/Brands"
+      `${import.meta.env.VITE_REACT_APP_DATA}/${import.meta.env.VITE_REACT_APP_BRANDS_ID}/Brands`
     );
   });
 
