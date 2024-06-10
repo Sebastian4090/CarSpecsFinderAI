@@ -1,8 +1,8 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import { useLocation } from "react-router-dom";
-import { Mock } from "vitest";
 import CarSpecs from "./CarSpecs";
 import userEvent from "@testing-library/user-event";
+import { vi, Mock } from "vitest";
 
 vi.mock("react-router-dom", () => {
   const originalModule = vi.importActual("react-router-dom");
@@ -26,7 +26,7 @@ describe("<CarSpecs /> Component", () => {
     },
   };
 
-  useLocation.mockReturnValue(location);
+  (useLocation as Mock).mockReturnValue(location);
 
   it("should render correctly", () => {
     render(<CarSpecs />);
@@ -46,7 +46,7 @@ describe("<CarSpecs /> Component", () => {
   it("should fetch specs when button is clicked", async () => {
     const mockFetch = vi.fn(() =>
       Promise.resolve({
-        json: () => Promise.resolve('{"Spec1": "Data1","Spec2": "Data2"}'),
+        json: () => Promise.resolve(`{"Spec1": "Data1", "Spec2": "Data2" }`),
       })
     );
 
@@ -58,7 +58,7 @@ describe("<CarSpecs /> Component", () => {
 
     await waitFor(() =>
       expect(mockFetch).toHaveBeenCalledWith(
-        "http://localhost:3000/specs",
+        import.meta.env.VITE_REACT_APP_SPECS,
         expect.objectContaining({
           method: "post",
           body: JSON.stringify({
@@ -76,7 +76,7 @@ describe("<CarSpecs /> Component", () => {
   it("should close when button is clicked", async () => {
     const mockFetch = vi.fn(() =>
       Promise.resolve({
-        json: () => Promise.resolve('{"Spec1": "Data1","Spec2": "Data2"}'),
+        json: () => Promise.resolve(`{ "Spec1": "Data1", "Spec2": "Data2" }`),
       })
     );
 

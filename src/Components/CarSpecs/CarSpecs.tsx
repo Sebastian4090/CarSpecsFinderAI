@@ -34,7 +34,7 @@ const specsFetch = async (
 
   if (userPrompt) {
     try {
-      let response = await fetch("http://localhost:3000/specs", {
+      let response = await fetch(import.meta.env.VITE_REACT_APP_SPECS, {
         method: "post",
         headers: {
           "Content-Type": "application/json",
