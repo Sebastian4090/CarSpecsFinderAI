@@ -4,7 +4,8 @@ Built with Vite, it provides specs for any vehicle you choose.<br>
 It's screen reader friendly and motion safe.<br>
 <br>
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/Sebastian4090/CarSpecsFinderAI)
-
+![Website](https://img.shields.io/website?url=https%3A%2F%2Ffacespotterai.onrender.com%2F)
+![Server](https://img.shields.io/website?url=https%3A%2F%2Fcarspecsfinderai-api.onrender.com&label=server)
 ## How to use?
 ### Enter this link: https://carspecsfinderai.onrender.com
 Select a <b>brand</b>, <b>model</b>, <b>generation</b>, <b>engine (displacement)</b> and click <b>"GET SPECS"</b> button.<br>
