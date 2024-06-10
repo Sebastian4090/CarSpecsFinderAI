@@ -11,7 +11,7 @@ You'll get a vehicle photo and detailed info on specifications including even co
 <br><br>
 
 ## Developed using:<br>
-[![List](https://skillicons.dev/icons?i=vite,react,ts,tailwind,vitest)](https://skillicons.dev)<br><br>
+[![List](https://skillicons.dev/icons?i=vite,react,ts,html,tailwind,vitest)](https://skillicons.dev)<br><br>
 
 ## API
 [CarSpecsFinderAI-API](https://github.com/Sebastian4090/CarSpecsFinderAI-API)<br><br>
